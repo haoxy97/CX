@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Install a modified version lammps in CX1
 # must compile at the login node. need esential libs.
 module purge
