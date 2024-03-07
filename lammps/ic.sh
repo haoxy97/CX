@@ -47,8 +47,9 @@ echo '''------------------------------------
 cd $PBS_O_WORKDIR
 
 module purge
-module load aocc/2.3.0
+module load tools/eb-dev
 module load libreadline
+module load aocc/2.3.0
 
 export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 export PATH="${HOME}/lammps/bin:${HOME}/openmpi4/bin:$PATH"
