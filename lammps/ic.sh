@@ -30,7 +30,7 @@ cd lammps-stable
 mkdir build
 cd build
 
-cmake -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
+cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++  -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
  -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
 make -j 2
 make install
