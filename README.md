@@ -1,6 +1,5 @@
 # CX1 lammps setup.
-One step to compile your own lammps.
-Just copy one of the command to your terminal, and press Enter.
+To compile your own LAMMPS, simply copy one of the commands below into your terminal and press Enter:
 
 to install in CX1
 ```
