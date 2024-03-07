@@ -30,8 +30,8 @@ cd lammps-stable
 mkdir build
 cd build
 
-cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++  -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
- -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
+cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -DCMAKE_PREFIX_PATH=${HOME}/openmpi4/lib  -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
+ -D PKG_MOLECULE=yes  -D PKG_KSPACE=yes -D PKG_EXTRA-PAIR=YES -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
 make -j 2
 make install
 
