@@ -48,6 +48,7 @@ cd $PBS_O_WORKDIR
 
 module purge
 module load aocc/2.3.0
+module load libreadline
 
 export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 export PATH="${HOME}/lammps/bin:${HOME}/openmpi4/bin:$PATH"
