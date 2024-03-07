@@ -53,6 +53,6 @@ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 export PATH="${HOME}/lammps/bin:${HOME}/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:${HOME}/netcdf/lib:${HOME}/hdf5/lib:${HOME}/sz2/lib:$LD_LIBRARY_PATH"
 
-mpirun -np 4 lmp -i lmp.sh
+mpirun -np 4 lmp -i lmp.in
 ------------------------------------'''
 
