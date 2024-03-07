@@ -16,7 +16,7 @@ wget 'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.5.tar.gz'
 tar -xvf openmpi-4.1.5.tar.gz
 cd openmpi-4.1.5
 ./configure CC=clang CCX=clang++ FC=flang --prefix=${HOME}/openmpi4 --enable-orterun-prefix-by-default --enable-mpi-cxx
-make -j 8
+make -j 2
 make install
 export PATH="${HOME}/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:$LD_LIBRARY_PATH"
@@ -32,7 +32,7 @@ cd build
 
 cmake -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
  -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
-make -j 8
+make -j 2
 make install
 
 export PATH="${HOME}/lammps/bin:$PATH"
