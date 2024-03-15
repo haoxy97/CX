@@ -24,14 +24,14 @@ cd lammps-stable
 mkdir build
 cd build
 # add more package for your needs
-cmake -DCMAKE_PREFIX_PATH=/home/$USER/openmpi4/lib -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_OPENMP=yes -D PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=/home/$USER/lammps ../cmake
+cmake -DCMAKE_PREFIX_PATH=${HOME}/openmpi4/lib -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_OPENMP=yes -D PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
 
 make -j 8
 make install
 
-export PATH="/home/$USER/lammps/bin:$PATH"
-export LD_LIBRARY_PATH="/home/$USER/lammps/lib:$LD_LIBRARY_PATH"
+export PATH="${HOME}/lammps/bin:$PATH"
+export LD_LIBRARY_PATH="${HOME}/lammps/lib:$LD_LIBRARY_PATH"
 
 cd ~
-echo 'export LD_LIBRARY_PATH="/home/$USER/openmpi4/lib:$LD_LIBRARY_PATH"' >> .bashrc
-echo 'export PATH="/home/$USER/openmpi4/bin:/home/$USER/lammps/bin:$PATH"' >> .bashrc
+echo 'export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:$LD_LIBRARY_PATH"' >> .bashrc
+echo 'export PATH="${HOME}/openmpi4/bin:${HOME}/lammps/bin:$PATH"' >> .bashrc
