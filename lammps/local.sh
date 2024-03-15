@@ -7,14 +7,14 @@ mkdir openmpi4 lammps
 wget 'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.5.tar.gz'
 tar -xvf openmpi-4.1.5.tar.gz
 cd openmpi-4.1.5/
-./configure --prefix=/home/$USER/openmpi4 --enable-orterun-prefix-by-default --enable-mpi-cxx
+./configure --prefix=${HOME}/openmpi4 --enable-orterun-prefix-by-default --enable-mpi-cxx
 
 # please wait
 make -j 8
 make install
 
-export PATH="/home/$USER/openmpi4/bin:$PATH"
-export LD_LIBRARY_PATH="/home/$USER/openmpi4/lib:$LD_LIBRARY_PATH"
+export PATH="${HOME}/openmpi4/bin:$PATH"
+export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:$LD_LIBRARY_PATH"
 
 cd ~
 wget 'https://download.lammps.org/tars/lammps-stable.tar.gz'
