@@ -1,11 +1,30 @@
 #! /bin/bash
 
+sudo apt install build-essential cmake ninja-build python3-distutils python3-apt\ 
+cmake ffmpeg libnetcdf-dev git netcdf-bin  libreadline-dev libnuma-dev -y 
+
+cd
+mkdir $HOME/software
+sudo apt install build-essential cmake ninja-build python3-distutils python3-apt
+cd llvm-project
+mkdir build
+cd build
+cmake -G Ninja ../llvm \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_ENABLE_PROJECTS="clang" \
+    -DCMAKE_INSTALL_PREFIX=$HOME/software/clang \
+    -DCMAKE_C_FLAGS="-march=native -mavx2" \
+    -DCMAKE_CXX_FLAGS="-march=native -mavx2"
+ninja
+ninja install
+export PATH=${HOME}/software/clang/bin:$PATH
+export LD_LIBRARY_PATH="${HOME}/software/clang/lib:$LD_LIBRARY_PATH"
+
+cd $HOME/software
 mkdir openmpi4 lammps
-sudo apt install cmake gcc g++  ffmpeg  libnetcdf-dev   git  python3-distutils gfortran netcdf-bin  libreadline-dev libnuma-dev -y 
 
 # install intel one api
 source ${HOME}/intel/oneapi/setvars.sh
-
 # aocc
 source ${HOME}/software/setenv_AOCC.sh
 
