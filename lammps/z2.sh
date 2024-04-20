@@ -62,5 +62,5 @@ export PATH="${HOME}/software/lammps/bin:$PATH"
 # export LD_LIBRARY_PATH="${HOME}/lammps/lib:$LD_LIBRARY_PATH"
 
 cd ~
-echo 'export LD_LIBRARY_PATH="${HOME}/software/openmpi4/lib:$LD_LIBRARY_PATH"' >> .bashrc
+echo 'export LD_LIBRARY_PATH="${HOME}/software/openmpi4/lib:${HOME}/software/clang/lib:$LD_LIBRARY_PATH"' >> .bashrc
 echo 'export PATH="${HOME}/software/openmpi4/bin:${HOME}/lammps/bin:$PATH"' >> .bashrc
