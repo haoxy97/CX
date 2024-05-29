@@ -9,12 +9,10 @@
 # export PATH="$PATH:/usr/local/cuda-12.4/bin"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-12.4/lib64"
 
-sudo apt install build-essential cmake ninja-build python3-distutils python3-apt cmake ffmpeg libnetcdf-dev git netcdf-bin gfortran  libreadline-dev libnuma-dev -y 
-cd
+sudo apt install build-essential cmake ninja-build python3-distutils python3-apt ffmpeg libnetcdf-dev git netcdf-bin gfortran  libreadline-dev libnuma-dev -y
 mkdir $HOME/software
-mkdir $HOME/software/clang
-sudo apt install build-essential cmake ninja-build python3-distutils python3-apt
 cd $HOME/software
+mkdir clang openmpi4 lammps
 wget https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.5/llvm-project-18.1.5.src.tar.xz
 tar -xvf llvm-project-18.1.5.src.tar.xz
 cd llvm-project-18.1.5.src
@@ -37,8 +35,6 @@ export PATH=${HOME}/software/clang/bin:$PATH
 export LD_LIBRARY_PATH="${HOME}/software/clang/lib:$LD_LIBRARY_PATH"
 
 cd $HOME/software
-mkdir openmpi4 lammps
-
 wget 'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz'
 tar -xvf openmpi-4.1.6.tar.gz
 cd openmpi-4.1.6/
@@ -48,6 +44,7 @@ make install
 export PATH="${HOME}/software/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/software/openmpi4/lib:$LD_LIBRARY_PATH"
 cd ${HOME}software/clang;ln -s x86_64-unknown-linux-gnu/* .
+
 cd ${HOME}/software
 wget 'https://download.lammps.org/tars/lammps-stable.tar.gz'
 mkdir -p lammps-stable
@@ -61,7 +58,6 @@ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -D BUILD_TOOLS=yes -
 # cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=single  -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_REAXFF=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes   -D PKG_OPENMP=yes -D BUILD_OMP=yes -D PKG_NETCDF=yes PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/software/lammps ../cmake
 make -j
 make install
-
 export PATH="${HOME}/software/lammps/bin:$PATH"
 # export LD_LIBRARY_PATH="${HOME}/lammps/lib:$LD_LIBRARY_PATH"
 
