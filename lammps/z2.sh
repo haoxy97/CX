@@ -12,8 +12,12 @@
 sudo apt install build-essential cmake ninja-build python3-distutils python3-apt cmake ffmpeg libnetcdf-dev git netcdf-bin gfortran  libreadline-dev libnuma-dev -y 
 cd
 mkdir $HOME/software
+mkdir $HOME/software/clang
 sudo apt install build-essential cmake ninja-build python3-distutils python3-apt
-cd llvm-project
+cd $HOME/software
+wget https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.5/llvm-project-18.1.5.src.tar.xz
+tar -xvf llvm-project-18.1.5.src.tar.xz
+cd llvm-project-18.1.5.src
 mkdir build
 cd build
 cmake -G Ninja ../llvm \
