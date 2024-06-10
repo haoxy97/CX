@@ -15,6 +15,7 @@ cmake -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D CMAKE_C_COMPILER=clang -D 
 -D PKG_REAXFF=yes -D PKG_OPT=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes -D PKG_VORONOI=yes \
 -D DOWNLOAD_VORO=yes -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp /opt/homebrew/opt/libomp/lib/libomp.dylib -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES="libomp"\
 -DOpenMP_libomp_LIBRARY="/opt/homebrew/Cellar/libomp/17.0.2/lib/libomp.dylib"  -DCMAKE_INSTALL_PREFIX=/opt/lammps ../cmake
-ma
+make -j 8
+make install
 cd ~
 echo 'export PATH="/opt/lammps/bin:$PATH"' >> .zshrc
