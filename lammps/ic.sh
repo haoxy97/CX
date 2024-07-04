@@ -18,9 +18,11 @@ cd openmpi-4.1.5
 ./configure CC=clang CCX=clang++ FC=flang --prefix=${HOME}/openmpi4 --enable-orterun-prefix-by-default --enable-mpi-cxx
 make -j 2
 make install
+fi
+
 export PATH="${HOME}/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:$LD_LIBRARY_PATH"
-fi
+
 
 cd ${HOME}
 wget 'https://download.lammps.org/tars/lammps-stable.tar.gz'
