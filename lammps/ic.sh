@@ -10,7 +10,7 @@ module load aocc/2.3.0
 cd ${HOME}
 mkdir -p ${HOME}/openmpi4
 mkdir -p ${HOME}/lammps
-
+if [ !-e  "${HOME}/openmpi4/bin/mpirun" ] 
 cd ${HOME}
 wget 'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.5.tar.gz'
 tar -xvf openmpi-4.1.5.tar.gz
@@ -20,7 +20,7 @@ make -j 2
 make install
 export PATH="${HOME}/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/openmpi4/lib:$LD_LIBRARY_PATH"
-
+fi
 
 cd ${HOME}
 wget 'https://download.lammps.org/tars/lammps-stable.tar.gz'
@@ -29,9 +29,9 @@ tar -xvf lammps-stable.tar.gz -C lammps-stable --strip-components=1
 cd lammps-stable
 mkdir build
 cd build
-
+rm -rf ./*
 cmake -D CMAKE_C_COMPILER=clang -D CMAKE_CXX_COMPILER=clang++ -DCMAKE_PREFIX_PATH=${HOME}/openmpi4/lib  -D PKG_OPENMP=yes -D PKG_OPT=yes -D BUILD_LAMMPS_SHELL=yes  -D LAMMPS_EXCEPTIONS=yes  -D BUILD_MPI=yes\
- -D PKG_MOLECULE=yes  -D PKG_KSPACE=yes -D PKG_EXTRA-PAIR=YES  -D PKG_RIGID=YES -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
+ -D PKG_MOLECULE=yes  -D PKG_KSPACE=yes -D PKG_EXTRA-PAIR=YES -D PKG_EXTRA_FIX=YES  -D PKG_RIGID=YES -D CMAKE_INSTALL_PREFIX=${HOME}/lammps ../cmake
 make -j 2
 make install
 
