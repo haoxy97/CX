@@ -10,7 +10,7 @@ module load aocc/2.3.0
 cd ${HOME}
 mkdir -p ${HOME}/openmpi4
 mkdir -p ${HOME}/lammps
-if [ !-e  "${HOME}/openmpi4/bin/mpirun" ] 
+if [ !-e  "${HOME}/openmpi4/bin/mpirun" ] ; then
 cd ${HOME}
 wget 'https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.5.tar.gz'
 tar -xvf openmpi-4.1.5.tar.gz
