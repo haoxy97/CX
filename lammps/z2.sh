@@ -44,7 +44,10 @@ make -j
 make install
 export PATH="${HOME}/software/openmpi4/bin:$PATH"
 export LD_LIBRARY_PATH="${HOME}/software/openmpi4/lib:$LD_LIBRARY_PATH"
-cd ${HOME}software/clang;ln -s x86_64-unknown-linux-gnu/* .
+#cd ${HOME}/software/clang;ln -s x86_64-unknown-linux-gnu/* .
+
+export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11:$CPLUS_INCLUDE_PATH
+export LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11:/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
 
 cd ${HOME}/software
 wget 'https://download.lammps.org/tars/lammps-stable.tar.gz'
@@ -54,6 +57,7 @@ cd lammps-stable
 mkdir build
 cd build
 cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_REAXFF=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes -D PKG_VORONOI=yes -D DOWNLOAD_VORO=yes -D PKG_OPENMP=yes -D BUILD_OMP=yes -D PKG_NETCDF=yes PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/software/lammps ../cmake
+
 # cuda version not use icc
 # cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=single  -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_REAXFF=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes   -D PKG_OPENMP=yes -D BUILD_OMP=yes -D PKG_NETCDF=yes PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/software/lammps ../cmake
 make -j
