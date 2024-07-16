@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-# install intel one api
+# optional: install intel one api
 #source ${HOME}/intel/oneapi/setvars.sh
 # aocc
 # source ${HOME}/software/setenv_AOCC.sh
@@ -13,6 +13,7 @@ sudo apt install build-essential cmake ninja-build python3-distutils python3-apt
 mkdir $HOME/software
 cd $HOME/software
 mkdir clang openmpi4 lammps
+# install clang first, not by aocc, use original clang
 wget https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.5/llvm-project-18.1.5.src.tar.xz
 tar -xvf llvm-project-18.1.5.src.tar.xz
 cd llvm-project-18.1.5.src
@@ -52,7 +53,6 @@ tar -xvf lammps-stable.tar.gz -C lammps-stable --strip-components=1
 cd lammps-stable
 mkdir build
 cd build
-
 cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_REAXFF=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes -D PKG_VORONOI=yes -D DOWNLOAD_VORO=yes -D PKG_OPENMP=yes -D BUILD_OMP=yes -D PKG_NETCDF=yes PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/software/lammps ../cmake
 # cuda version not use icc
 # cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=single  -D BUILD_TOOLS=yes -D BUILD_LAMMPS_SHELL=yes -D PKG_REAXFF=yes -D PKG_EXTRA-FIX=yes -D PKG_EXTRA-COMPUTE=yes -D PKG_H5MD=yes   -D PKG_OPENMP=yes -D BUILD_OMP=yes -D PKG_NETCDF=yes PKG_OPT=yes  -D LAMMPS_EXCEPTIONS=yes -D BUILD_MPI=yes -D CMAKE_INSTALL_PREFIX=${HOME}/software/lammps ../cmake
