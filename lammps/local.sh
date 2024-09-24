@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# make sure the conda env is not enable
+conda deactivate
+
 sudo apt install cmake gcc g++  ffmpeg  libnetcdf-dev   git  python3-distutils gfortran netcdf-bin  libreadline-dev libnuma-dev -y 
 
 cd ~
